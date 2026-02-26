@@ -24,4 +24,12 @@ cpSync('static', 'dist', { recursive: true });
 rmSync('dist/sources.json', { force: true });
 rmSync('dist/source-names.json', { force: true });
 
+// Remove CWS promo/screenshot images that shouldn't ship in the extension
+import { readdirSync } from 'fs';
+for (const f of readdirSync('dist')) {
+  if (f.startsWith('promo-') || f.startsWith('screenshot-')) {
+    rmSync(`dist/${f}`, { force: true });
+  }
+}
+
 console.log(`Build complete -> dist/${isDev ? ' (with source maps)' : ''}`);

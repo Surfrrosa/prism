@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prism - Privacy Policy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #0f0a1a;
+      color: #e2ddf5;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 2rem;
+      color: #c4b5fd;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-size: 1.25rem;
+      color: #a78bfa;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    p, li {
+      margin-bottom: 0.75rem;
+      color: #c0b8d8;
+    }
+    ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .updated {
+      color: #8b80a8;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+    a {
+      color: #a78bfa;
+    }
+    .back {
+      display: inline-block;
+      margin-top: 2rem;
+      color: #8b80a8;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .back:hover { color: #c4b5fd; }
+    .spectrum {
+      display: flex;
+      height: 4px;
+      border-radius: 2px;
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+    .spectrum span { flex: 1; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Prism Privacy Policy</h1>
+    <p class="updated">Last updated: February 26, 2026</p>
+
+    <div class="spectrum">
+      <span style="background:#3B82F6"></span>
+      <span style="background:#60A5FA"></span>
+      <span style="background:#A855F7"></span>
+      <span style="background:#F97316"></span>
+      <span style="background:#EF4444"></span>
+    </div>
+
+    <h2>The short version</h2>
+    <p>Prism makes zero network requests. Your data never leaves your browser. We don't collect, transmit, or sell anything.</p>
+
+    <h2>What data is stored</h2>
+    <p>When you visit a recognized news website, Prism stores a reading record locally in your browser's IndexedDB. Each record contains:</p>
+    <ul>
+      <li>The page URL and title</li>
+      <li>The domain name</li>
+      <li>A timestamp</li>
+      <li>The source's bias rating and credibility score (from our bundled database)</li>
+      <li>The source name</li>
+    </ul>
+    <p>Your settings (time period preference and notification toggle) are stored in chrome.storage.local.</p>
+
+    <h2>What data is NOT collected</h2>
+    <ul>
+      <li>No browsing data is transmitted to any server</li>
+      <li>No analytics or telemetry</li>
+      <li>No cookies or tracking pixels</li>
+      <li>No personal information (name, email, accounts)</li>
+      <li>No page content is read or stored</li>
+      <li>No third-party services are contacted</li>
+    </ul>
+
+    <h2>Network requests</h2>
+    <p>Prism makes exactly zero network requests. No fetch, XHR, or WebSocket calls. No external fonts, scripts, or resources. Everything is bundled locally in the extension.</p>
+
+    <h2>Permissions</h2>
+    <ul>
+      <li><strong>tabs</strong> - Read the URL when you navigate to a page, to match against our news source database. This is the core functionality.</li>
+      <li><strong>storage</strong> - Store your settings locally.</li>
+      <li><strong>alarms</strong> - Schedule weekly report notifications and daily data cleanup.</li>
+      <li><strong>notifications</strong> - Deliver your optional weekly media diet report.</li>
+      <li><strong>sidePanel</strong> - Display the full dashboard.</li>
+    </ul>
+
+    <h2>Data retention</h2>
+    <p>Reading records older than 90 days are automatically pruned. You can clear all data at any time from the dashboard. Uninstalling the extension removes all stored data.</p>
+
+    <h2>Source database</h2>
+    <p>The media bias database is bundled as static data at build time from the <a href="https://github.com/nicholasgasior/media-bias-fact-check-data">Media Bias/Fact Check open-source project</a> (MIT license). It is not fetched from any remote server. Database updates require a new extension version.</p>
+
+    <h2>Open source</h2>
+    <p>Prism is open source. You can inspect the full source code at <a href="https://github.com/Surfrrosa/prism">github.com/Surfrrosa/prism</a>.</p>
+
+    <h2>Changes</h2>
+    <p>If this policy changes, the update date at the top will be revised. Material changes will be noted in the extension's changelog.</p>
+
+    <h2>Contact</h2>
+    <p>Questions? Open an issue on <a href="https://github.com/Surfrrosa/prism/issues">GitHub</a>.</p>
+
+    <a class="back" href="./">Back to Prism</a>
+  </div>
+</body>
+</html>

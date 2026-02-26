@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prism - See the full spectrum</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #0f0a1a;
+      color: #e2ddf5;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      max-width: 600px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3rem;
+      color: #c4b5fd;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.5rem;
+    }
+    .tagline {
+      font-size: 1.25rem;
+      color: #a78bfa;
+      margin-bottom: 2rem;
+    }
+    .spectrum {
+      display: flex;
+      height: 6px;
+      border-radius: 3px;
+      overflow: hidden;
+      margin: 2rem auto;
+      max-width: 300px;
+    }
+    .spectrum span { flex: 1; }
+    .description {
+      color: #8b80a8;
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+    .links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    a {
+      color: #a78bfa;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    a:hover { color: #c4b5fd; text-decoration: underline; }
+    .features {
+      text-align: left;
+      margin: 2.5rem 0;
+      display: grid;
+      gap: 1.25rem;
+    }
+    .feature {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .feature-icon {
+      color: #a78bfa;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      width: 24px;
+      text-align: center;
+    }
+    .feature p {
+      color: #8b80a8;
+      font-size: 0.95rem;
+    }
+    .feature strong {
+      color: #c4b5fd;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>PRISM</h1>
+    <p class="tagline">See the full spectrum.</p>
+
+    <div class="spectrum">
+      <span style="background:#3B82F6"></span>
+      <span style="background:#60A5FA"></span>
+      <span style="background:#A855F7"></span>
+      <span style="background:#F97316"></span>
+      <span style="background:#EF4444"></span>
+    </div>
+
+    <p class="description">
+      A Chrome extension that passively tracks your news media diet and computes a Perspective Diversity Score. See your bias blind spots, discover new sources, and share your media diet card.
+    </p>
+
+    <div class="features">
+      <div class="feature">
+        <span class="feature-icon">~</span>
+        <div>
+          <strong>Diversity Score</strong>
+          <p>A 0-100 score measuring how balanced your news diet is across the political spectrum.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">></span>
+        <div>
+          <strong>Blind Spot Detection</strong>
+          <p>Discover which perspectives you're missing, with suggested sources to broaden your view.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">#</span>
+        <div>
+          <strong>Shareable Cards</strong>
+          <p>Generate a retro-styled card showing your media diet stats. Share it, compare with friends.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">*</span>
+        <div>
+          <strong>100% Private</strong>
+          <p>Zero network requests. All data stays in your browser. Open source.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="https://github.com/Surfrrosa/prism">GitHub</a>
+      <a href="./privacy.html">Privacy Policy</a>
+    </div>
+  </div>
+</body>
+</html>
