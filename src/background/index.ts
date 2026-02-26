@@ -12,9 +12,6 @@ const BIAS_COLORS: Record<Bias, string> = {
   [Bias.R]: '#EF4444',   // red
 };
 
-const NEUTRAL_COLOR = '#666666';
-const RAINBOW_COLOR = '#A855F7'; // used when balanced
-
 // --- Track completed page loads ---
 
 // Debounce: only process a tab once it's fully loaded

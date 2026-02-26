@@ -1,5 +1,5 @@
 import type { DietStats, Bias } from '../lib/types';
-import { BIAS_LABELS, BIAS_SHORT, CREDIBILITY_LABELS, Credibility } from '../lib/types';
+import { BIAS_LABELS, BIAS_SHORT } from '../lib/types';
 
 const BIAS_KEYS: Bias[] = [0, 1, 2, 3, 4];
 

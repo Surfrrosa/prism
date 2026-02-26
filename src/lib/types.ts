@@ -92,5 +92,4 @@ export type Message =
   | { type: 'get-settings' }
   | { type: 'set-settings'; settings: Partial<Settings> }
   | { type: 'clear-all' }
-  | { type: 'generate-card' }
   | { type: 'get-sources-for-bias'; bias: Bias };

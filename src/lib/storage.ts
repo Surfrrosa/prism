@@ -1,5 +1,5 @@
 import { openDB, type IDBPDatabase } from 'idb';
-import type { ReadingRecord, Settings, DEFAULT_SETTINGS } from './types';
+import type { ReadingRecord, Settings } from './types';
 
 const DB_NAME = 'prism';
 const DB_VERSION = 1;
