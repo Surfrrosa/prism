@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Prism",
+  "version": "0.1.0",
+  "description": "See the full spectrum. Track your media diet and discover your blind spots.",
+  "permissions": [
+    "tabs",
+    "storage",
+    "alarms",
+    "notifications",
+    "sidePanel"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/index.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "sidepanel/index.html"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

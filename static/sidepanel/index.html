@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <div class="logo">PRISM</div>
+      <div class="period-toggle">
+        <button class="period-btn active" data-period="week">7 Days</button>
+        <button class="period-btn" data-period="month">30 Days</button>
+      </div>
+    </header>
+
+    <div id="loading" class="loading">Analyzing your spectrum...</div>
+
+    <div id="locked" class="hidden section">
+      <div class="retro-card">
+        <div class="lock-icon">&#9670;</div>
+        <p class="lock-text">Your first report unlocks after <strong>10 articles</strong>.</p>
+        <p class="lock-count"><span id="current-count">0</span> / 10</p>
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        <p class="lock-sub">Browse news sites normally. Prism tracks your media diet in the background.</p>
+      </div>
+    </div>
+
+    <div id="dashboard" class="hidden">
+      <!-- Score -->
+      <section class="section score-section">
+        <div class="score-ring" id="score-ring">
+          <svg viewBox="0 0 120 120" class="ring-svg">
+            <circle cx="60" cy="60" r="52" class="ring-bg"/>
+            <circle cx="60" cy="60" r="52" class="ring-fill" id="ring-fill"/>
+          </svg>
+          <div class="ring-score" id="score-display">--</div>
+        </div>
+        <div class="score-label">DIVERSITY SCORE</div>
+      </section>
+
+      <!-- Spectrum -->
+      <section class="section">
+        <h2 class="section-title">YOUR SPECTRUM</h2>
+        <div class="spectrum-bar" id="spectrum-bar">
+          <div class="spectrum-segment" data-bias="L" id="seg-L"></div>
+          <div class="spectrum-segment" data-bias="LC" id="seg-LC"></div>
+          <div class="spectrum-segment" data-bias="C" id="seg-C"></div>
+          <div class="spectrum-segment" data-bias="RC" id="seg-RC"></div>
+          <div class="spectrum-segment" data-bias="R" id="seg-R"></div>
+        </div>
+        <div class="spectrum-legend" id="spectrum-legend"></div>
+      </section>
+
+      <!-- Stats -->
+      <section class="section">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="article-count">0</div>
+            <div class="stat-label">Articles</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="source-count">0</div>
+            <div class="stat-label">Sources</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="cred-avg">--</div>
+            <div class="stat-label">Factual Avg</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Blind Spots -->
+      <section class="section" id="blind-spots-section">
+        <h2 class="section-title">BLIND SPOTS</h2>
+        <div id="blind-spots"></div>
+      </section>
+
+      <!-- Top Sources -->
+      <section class="section">
+        <h2 class="section-title">TOP SOURCES</h2>
+        <div id="top-sources"></div>
+      </section>
+
+      <!-- Actions -->
+      <section class="section actions">
+        <button class="retro-btn" id="share-btn">Share Your Card</button>
+        <button class="retro-btn btn-ghost" id="clear-btn">Clear All Data</button>
+      </section>
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>

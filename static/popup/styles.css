@@ -1,0 +1,276 @@
+/* === Prism Popup — 90s Retro Aesthetic === */
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --bg: #1a1127;
+  --surface: #241b35;
+  --border: #7c3aed;
+  --border-dim: #4c1d95;
+  --text: #e2e0e7;
+  --text-dim: #9890a8;
+  --accent: #a855f7;
+  --blue: #3b82f6;
+  --light-blue: #60a5fa;
+  --purple: #a855f7;
+  --orange: #f97316;
+  --red: #ef4444;
+  --green: #22c55e;
+  --yellow: #eab308;
+  --pink: #ec4899;
+  --cyan: #06b6d4;
+
+  --font-display: 'VT323', monospace;
+  --font-body: 'Space Mono', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 320px;
+  min-height: 200px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 12px;
+}
+
+.hidden { display: none !important; }
+
+/* --- Retro Window Chrome --- */
+
+.retro-window {
+  border: 2px solid var(--border);
+  margin: 8px;
+  background: var(--surface);
+}
+
+.window-title {
+  background: linear-gradient(90deg, var(--border-dim), var(--accent), var(--border-dim));
+  padding: 4px 10px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: white;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+}
+
+.window-body {
+  padding: 16px;
+}
+
+/* --- Lock Screen --- */
+
+.lock-icon {
+  font-size: 36px;
+  text-align: center;
+  color: var(--accent);
+  margin-bottom: 8px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.lock-text {
+  text-align: center;
+  font-size: 13px;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.lock-count {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  height: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border-dim);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--purple), var(--red));
+  transition: width 0.5s ease;
+}
+
+.lock-sub {
+  text-align: center;
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* --- Score Display --- */
+
+.score-container {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.score-label {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.score-value {
+  font-family: var(--font-display);
+  font-size: 64px;
+  line-height: 1;
+  background: linear-gradient(180deg, var(--cyan), var(--accent), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* --- Spectrum Bar --- */
+
+.spectrum-bar {
+  display: flex;
+  height: 20px;
+  border: 1px solid var(--border-dim);
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.spectrum-segment {
+  transition: flex-grow 0.5s ease;
+  min-width: 0;
+}
+
+.spectrum-segment[data-bias="L"]  { background: var(--blue); }
+.spectrum-segment[data-bias="LC"] { background: var(--light-blue); }
+.spectrum-segment[data-bias="C"]  { background: var(--purple); }
+.spectrum-segment[data-bias="RC"] { background: var(--orange); }
+.spectrum-segment[data-bias="R"]  { background: var(--red); }
+
+.spectrum-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+
+/* --- Stats Row --- */
+
+.stats-row {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 16px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--text);
+}
+
+.stat-label {
+  font-size: 9px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- Blind Spots --- */
+
+.blind-spots {
+  margin-bottom: 16px;
+}
+
+.blind-spot-item {
+  background: rgba(168, 85, 247, 0.1);
+  border-left: 2px solid var(--accent);
+  padding: 6px 10px;
+  margin-bottom: 6px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.blind-spot-item strong {
+  color: var(--accent);
+}
+
+/* --- Current Page Info --- */
+
+.current-page {
+  background: var(--bg);
+  border: 1px solid var(--border-dim);
+  padding: 8px 10px;
+  margin-bottom: 16px;
+  font-size: 11px;
+}
+
+.current-page .source-name {
+  font-weight: 700;
+}
+
+.current-page .bias-tag {
+  display: inline-block;
+  padding: 1px 6px;
+  font-size: 10px;
+  border-radius: 2px;
+  margin-left: 6px;
+}
+
+.bias-tag[data-bias="L"]  { background: var(--blue); color: white; }
+.bias-tag[data-bias="LC"] { background: var(--light-blue); color: #1a1127; }
+.bias-tag[data-bias="C"]  { background: var(--purple); color: white; }
+.bias-tag[data-bias="RC"] { background: var(--orange); color: white; }
+.bias-tag[data-bias="R"]  { background: var(--red); color: white; }
+
+/* --- Button --- */
+
+.retro-btn {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.retro-btn:hover {
+  background: var(--accent);
+  color: white;
+}
+
+/* --- Loading --- */
+
+#loading {
+  padding: 40px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--text-dim);
+  animation: pulse 1.5s ease-in-out infinite;
+}

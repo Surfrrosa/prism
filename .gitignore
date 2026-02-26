@@ -1,0 +1,5 @@
+node_modules/
+dist/
+data/mbfc-raw.json
+*.zip
+.DS_Store

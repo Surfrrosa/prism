@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <div id="loading">Scanning your spectrum...</div>
+
+    <div id="locked" class="hidden">
+      <div class="retro-window">
+        <div class="window-title">PRISM v0.1</div>
+        <div class="window-body">
+          <div class="lock-icon">&#9670;</div>
+          <p class="lock-text">Your first report unlocks after <strong>10 articles</strong>.</p>
+          <p class="lock-count"><span id="current-count">0</span> / 10</p>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <p class="lock-sub">Keep browsing. We're watching the spectrum.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="unlocked" class="hidden">
+      <div class="retro-window">
+        <div class="window-title">PRISM v0.1</div>
+        <div class="window-body">
+          <div class="score-container">
+            <div class="score-label">DIVERSITY SCORE</div>
+            <div class="score-value" id="score">--</div>
+          </div>
+
+          <div class="spectrum-bar" id="spectrum-bar">
+            <div class="spectrum-segment" data-bias="L" id="seg-L"></div>
+            <div class="spectrum-segment" data-bias="LC" id="seg-LC"></div>
+            <div class="spectrum-segment" data-bias="C" id="seg-C"></div>
+            <div class="spectrum-segment" data-bias="RC" id="seg-RC"></div>
+            <div class="spectrum-segment" data-bias="R" id="seg-R"></div>
+          </div>
+          <div class="spectrum-labels">
+            <span>Left</span>
+            <span>Center</span>
+            <span>Right</span>
+          </div>
+
+          <div class="stats-row">
+            <div class="stat">
+              <div class="stat-value" id="article-count">0</div>
+              <div class="stat-label">articles</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value" id="source-count">0</div>
+              <div class="stat-label">sources</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value" id="cred-avg">--</div>
+              <div class="stat-label">factual</div>
+            </div>
+          </div>
+
+          <div id="blind-spots" class="blind-spots"></div>
+
+          <div id="current-page" class="current-page hidden"></div>
+
+          <button id="open-dashboard" class="retro-btn">Full Dashboard</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
