@@ -83,12 +83,16 @@ function showDashboard(stats: DietStats) {
 
   // Spectrum legend
   const $legend = document.getElementById('spectrum-legend')!;
-  $legend.innerHTML = '';
+  $legend.textContent = '';
   for (const b of BIAS_KEYS) {
     const pct = stats.biasPercentages[b];
     const item = document.createElement('div');
     item.className = 'legend-item';
-    item.innerHTML = `<div class="legend-dot" data-bias="${BIAS_SHORT[b]}"></div>${BIAS_LABELS[b]} ${pct}%`;
+    const dot = document.createElement('div');
+    dot.className = 'legend-dot';
+    dot.dataset.bias = BIAS_SHORT[b];
+    item.appendChild(dot);
+    item.appendChild(document.createTextNode(`${BIAS_LABELS[b]} ${pct}%`));
     $legend.appendChild(item);
   }
 
@@ -101,7 +105,7 @@ function showDashboard(stats: DietStats) {
   // Blind spots
   const $spotsSection = document.getElementById('blind-spots-section')!;
   const $spots = document.getElementById('blind-spots')!;
-  $spots.innerHTML = '';
+  $spots.textContent = '';
 
   if (stats.blindSpots.length === 0) {
     $spotsSection.classList.add('hidden');
@@ -111,31 +115,47 @@ function showDashboard(stats: DietStats) {
       const card = document.createElement('div');
       card.className = 'blind-spot-card';
 
-      // Build perspective links for the missing bias categories
-      const links = spot.biasMissing.map(b => {
-        const query = encodeURIComponent(stats.topSources[0]?.name || 'news');
-        return `<a class="perspective-link" href="https://news.google.com/search?q=${query}" target="_blank">${BIAS_LABELS[b]}</a>`;
-      }).join('');
+      const strong = document.createElement('strong');
+      strong.textContent = `No ${spot.topic}`;
+      card.appendChild(strong);
+      card.appendChild(document.createTextNode(` this ${currentPeriod}.`));
 
-      card.innerHTML = `
-        <strong>No ${spot.topic}</strong> this ${currentPeriod}.
-        <div class="perspective-links">Try: ${links}</div>
-      `;
+      const linksDiv = document.createElement('div');
+      linksDiv.className = 'perspective-links';
+      linksDiv.appendChild(document.createTextNode('Try: '));
+
+      // Request actual source suggestions from background for each missing bias
+      for (const b of spot.biasMissing) {
+        renderSourceSuggestions(linksDiv, b);
+      }
+
+      card.appendChild(linksDiv);
       $spots.appendChild(card);
     }
   }
 
   // Top sources
   const $sources = document.getElementById('top-sources')!;
-  $sources.innerHTML = '';
+  $sources.textContent = '';
   for (const src of stats.topSources) {
     const row = document.createElement('div');
     row.className = 'source-row';
-    row.innerHTML = `
-      <div class="source-bias-dot" style="background:${BIAS_COLORS[src.bias]}"></div>
-      <div class="source-name">${src.name}</div>
-      <div class="source-count">${src.count}</div>
-    `;
+
+    const dot = document.createElement('div');
+    dot.className = 'source-bias-dot';
+    dot.style.background = BIAS_COLORS[src.bias];
+
+    const name = document.createElement('div');
+    name.className = 'source-name';
+    name.textContent = src.name;
+
+    const count = document.createElement('div');
+    count.className = 'source-count';
+    count.textContent = String(src.count);
+
+    row.appendChild(dot);
+    row.appendChild(name);
+    row.appendChild(count);
     $sources.appendChild(row);
   }
 }
@@ -283,6 +303,34 @@ function generateShareCard(stats: DietStats) {
     a.click();
     URL.revokeObjectURL(url);
   }, 'image/png');
+}
+
+// --- Blind spot source suggestions ---
+
+async function renderSourceSuggestions(container: HTMLElement, bias: Bias) {
+  const sources: Array<{ domain: string; name: string }> | null =
+    await chrome.runtime.sendMessage({ type: 'get-sources-for-bias', bias });
+
+  if (sources && sources.length > 0) {
+    for (const src of sources.slice(0, 3)) {
+      const a = document.createElement('a');
+      a.className = 'perspective-link';
+      a.href = `https://${src.domain}`;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = src.name;
+      container.appendChild(a);
+    }
+  } else {
+    // Fallback: show bias label linking to Google News
+    const a = document.createElement('a');
+    a.className = 'perspective-link';
+    a.href = 'https://news.google.com';
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = BIAS_LABELS[bias];
+    container.appendChild(a);
+  }
 }
 
 // --- Init ---

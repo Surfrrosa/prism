@@ -20,4 +20,8 @@ await build({
 
 cpSync('static', 'dist', { recursive: true });
 
+// Remove standalone JSON files that are already bundled into JS by esbuild
+rmSync('dist/sources.json', { force: true });
+rmSync('dist/source-names.json', { force: true });
+
 console.log(`Build complete -> dist/${isDev ? ' (with source maps)' : ''}`);

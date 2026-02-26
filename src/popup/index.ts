@@ -58,7 +58,10 @@ function showUnlocked(stats: DietStats) {
   for (const spot of stats.blindSpots.slice(0, 2)) {
     const el = document.createElement('div');
     el.className = 'blind-spot-item';
-    el.innerHTML = `<strong>Blind spot:</strong> ${spot.topic}`;
+    const strong = document.createElement('strong');
+    strong.textContent = 'Blind spot:';
+    el.appendChild(strong);
+    el.appendChild(document.createTextNode(' ' + spot.topic));
     $spots.appendChild(el);
   }
 }
@@ -66,11 +69,19 @@ function showUnlocked(stats: DietStats) {
 function showCurrentPage(info: { name: string; bias: Bias; credibility: number }) {
   const $page = document.getElementById('current-page')!;
   $page.classList.remove('hidden');
-  const biasKey = BIAS_SHORT[info.bias];
-  $page.innerHTML = `
-    <span class="source-name">${info.name}</span>
-    <span class="bias-tag" data-bias="${biasKey}">${BIAS_LABELS[info.bias]}</span>
-  `;
+  $page.textContent = '';
+
+  const nameSpan = document.createElement('span');
+  nameSpan.className = 'source-name';
+  nameSpan.textContent = info.name;
+
+  const biasSpan = document.createElement('span');
+  biasSpan.className = 'bias-tag';
+  biasSpan.dataset.bias = BIAS_SHORT[info.bias];
+  biasSpan.textContent = BIAS_LABELS[info.bias];
+
+  $page.appendChild(nameSpan);
+  $page.appendChild(biasSpan);
 }
 
 // Open side panel

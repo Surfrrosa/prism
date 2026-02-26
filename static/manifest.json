@@ -2,6 +2,7 @@
   "manifest_version": 3,
   "name": "Prism",
   "version": "0.1.0",
+  "minimum_chrome_version": "120",
   "description": "See the full spectrum. Track your media diet and discover your blind spots.",
   "permissions": [
     "tabs",

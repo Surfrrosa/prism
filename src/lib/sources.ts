@@ -18,7 +18,6 @@ const SUPPLEMENTARY: Record<string, { name: string; bias: Bias; cred: Credibilit
   'apple.news':        { name: 'Apple News',        bias: Bias.C,  cred: Credibility.H },
   'flipboard.com':     { name: 'Flipboard',         bias: Bias.C,  cred: Credibility.MF },
   'news.yahoo.com':    { name: 'Yahoo News',        bias: Bias.LC, cred: Credibility.H },
-  'substack.com':      { name: 'Substack',          bias: Bias.C,  cred: Credibility.MF },
   // International outlets not in MBFC
   'bbc.co.uk':         { name: 'BBC News',          bias: Bias.LC, cred: Credibility.H },
   'sky.com':           { name: 'Sky News',           bias: Bias.RC, cred: Credibility.H },

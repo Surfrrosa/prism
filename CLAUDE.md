@@ -12,7 +12,11 @@ npm run build    # esbuild bundles TS -> dist/
 npx tsc --noEmit # Type-check only
 ```
 
+## Running
+
 Load in Chrome: `chrome://extensions` > Developer mode > Load unpacked > select `dist/`.
+
+Browse news sites normally. The badge shows the bias rating (L/LC/C/RC/R) for recognized sources. Click the popup to see your score, or open the side panel for the full dashboard. The score unlocks after 10 articles.
 
 ## Architecture
 
@@ -26,7 +30,7 @@ Load in Chrome: `chrome://extensions` > Developer mode > Load unpacked > select 
 
 ## Data Source
 
-Media Bias/Fact Check (MBFC) open-source extension database (MIT license). ~1,932 sources with bias ratings (L/LC/C/RC/R) and factual reporting scores (VL-VH). Processed from `data/mbfc-raw.json` into `static/sources.json`.
+Media Bias/Fact Check (MBFC) open-source extension database (MIT license). ~2,725 sources with bias ratings (L/LC/C/RC/R) and factual reporting scores (VL-VH). Processed from `data/mbfc-raw.json` into `static/sources.json`. Supplemented with manual entries for aggregators and international outlets, plus heuristic detection for local news sites.
 
 ## Key Files
 

@@ -27,11 +27,25 @@ function getDB(): Promise<IDBPDatabase> {
 export async function storeReading(record: Omit<ReadingRecord, 'id'>): Promise<boolean> {
   const db = await getDB();
 
-  // Deduplicate: skip if we already logged this exact URL today
+  // Deduplicate: skip if we already logged this exact URL today.
+  // Use a cursor on the by-url index to avoid fetching all historical records.
   const dayStart = new Date();
   dayStart.setHours(0, 0, 0, 0);
-  const existing = await db.getAllFromIndex('readings', 'by-url', record.url);
-  const duplicate = existing.some(r => r.timestamp >= dayStart.getTime());
+  const dayStartMs = dayStart.getTime();
+
+  const tx = db.transaction('readings', 'readonly');
+  const index = tx.store.index('by-url');
+  let cursor = await index.openCursor(record.url);
+  let duplicate = false;
+  while (cursor) {
+    if (cursor.value.timestamp >= dayStartMs) {
+      duplicate = true;
+      break;
+    }
+    cursor = await cursor.continue();
+  }
+  await tx.done;
+
   if (duplicate) return false;
 
   await db.add('readings', record);

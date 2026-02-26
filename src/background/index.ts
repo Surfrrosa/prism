@@ -1,4 +1,4 @@
-import { lookupSource } from '../lib/sources';
+import { lookupSource, getSourcesForBias } from '../lib/sources';
 import { storeReading, getReadings, clearAllData, getSettings, saveSettings, pruneOldReadings } from '../lib/storage';
 import { computeStats, getPeriodRange } from '../lib/score';
 import { Bias } from '../lib/types';
@@ -29,6 +29,11 @@ chrome.tabs.onUpdated.addListener((tabId, info, tab) => {
     pendingTabs.delete(tabId);
     if (tab.url) handlePageVisit(tabId, tab.url, tab.title || '');
   }
+});
+
+// Clean up pendingTabs when tabs are closed to prevent memory leaks
+chrome.tabs.onRemoved.addListener((tabId) => {
+  pendingTabs.delete(tabId);
 });
 
 async function handlePageVisit(tabId: number, url: string, title: string) {
@@ -104,6 +109,10 @@ const messageHandlers: Record<string, (msg: any) => Promise<any>> = {
 
   'clear-all': async () => {
     await clearAllData();
+  },
+
+  'get-sources-for-bias': async (msg) => {
+    return getSourcesForBias(msg.bias, 5);
   },
 };
 
