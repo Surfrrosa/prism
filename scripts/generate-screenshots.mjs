@@ -229,7 +229,7 @@ function screenshot3() {
     { label: 'Instant recognition', desc: 'Badge updates on every visit' },
     { label: '100% private', desc: 'Zero network requests' },
   ].map((f, i) => {
-    const fx = 280 + i * 280;
+    const fx = 360 + i * 280;
     return `
       <text x="${fx}" y="700" text-anchor="middle" font-family="monospace" font-size="13" font-weight="700" fill="${ACCENT}">${f.label}</text>
       <text x="${fx}" y="720" text-anchor="middle" font-family="monospace" font-size="11" fill="${MUTED}">${f.desc}</text>`;
