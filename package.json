@@ -16,7 +16,7 @@
     "@types/chrome": "0.1.37",
     "esbuild": "0.27.4",
     "sharp": "0.34.5",
-    "typescript": "5.9.3"
+    "typescript": "6.0.2"
   },
   "dependencies": {
     "idb": "8.0.3"
