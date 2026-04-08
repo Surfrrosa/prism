@@ -1,10 +1,5 @@
 import type { DietStats, Bias } from '../lib/types';
-import { BIAS_LABELS, BIAS_SHORT } from '../lib/types';
-
-const BIAS_KEYS: Bias[] = [0, 1, 2, 3, 4];
-const BIAS_COLORS: Record<Bias, string> = {
-  0: '#3b82f6', 1: '#60a5fa', 2: '#a855f7', 3: '#f97316', 4: '#ef4444',
-};
+import { BIAS_LABELS, BIAS_SHORT, BIAS_KEYS, BIAS_COLORS } from '../lib/types';
 
 let currentPeriod: 'week' | 'month' = 'week';
 
@@ -255,15 +250,21 @@ function generateShareCard(stats: DietStats) {
   ctx.lineWidth = 1;
   ctx.strokeRect(barX, barY, barW, barH);
 
-  // Legend
+  // Legend (two rows to avoid overlap on longer labels)
   ctx.font = '13px "Space Mono", monospace';
-  let legendX = 40;
-  for (const b of BIAS_KEYS) {
-    ctx.fillStyle = colors[b];
-    ctx.fillRect(legendX, 206, 8, 8);
-    ctx.fillStyle = '#9890a8';
-    ctx.fillText(`${BIAS_LABELS[b]} ${stats.biasPercentages[b]}%`, legendX + 12, 214);
-    legendX += 110;
+  const legendRows: Bias[][] = [[0, 1, 2], [3, 4]];
+  let legendY = 206;
+  for (const row of legendRows) {
+    let legendX = 40;
+    for (const b of row) {
+      ctx.fillStyle = colors[b];
+      ctx.fillRect(legendX, legendY, 8, 8);
+      ctx.fillStyle = '#9890a8';
+      const label = `${BIAS_LABELS[b]} ${stats.biasPercentages[b]}%`;
+      ctx.fillText(label, legendX + 12, legendY + 8);
+      legendX += ctx.measureText(label).width + 28;
+    }
+    legendY += 18;
   }
 
   // Stats

@@ -1,7 +1,5 @@
 import type { DietStats, Bias } from '../lib/types';
-import { BIAS_LABELS, BIAS_SHORT } from '../lib/types';
-
-const BIAS_KEYS: Bias[] = [0, 1, 2, 3, 4];
+import { BIAS_LABELS, BIAS_SHORT, BIAS_KEYS } from '../lib/types';
 
 const $loading = document.getElementById('loading')!;
 const $locked = document.getElementById('locked')!;
