@@ -59,12 +59,6 @@ export async function getReadings(start: number, end: number): Promise<ReadingRe
   return db.getAllFromIndex('readings', 'by-timestamp', range);
 }
 
-/** Get the total number of readings. */
-export async function getTotalCount(): Promise<number> {
-  const db = await getDB();
-  return db.count('readings');
-}
-
 /** Clear all reading data. */
 export async function clearAllData(): Promise<void> {
   const db = await getDB();

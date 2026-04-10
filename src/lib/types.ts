@@ -33,13 +33,14 @@ export const BIAS_SHORT: Record<Bias, string> = {
   [Bias.R]: 'R',
 };
 
-export const CREDIBILITY_LABELS: Record<Credibility, string> = {
-  [Credibility.VL]: 'Very Low',
-  [Credibility.L]: 'Low',
-  [Credibility.M]: 'Mixed',
-  [Credibility.MF]: 'Mostly Factual',
-  [Credibility.H]: 'High',
-  [Credibility.VH]: 'Very High',
+export const BIAS_KEYS: Bias[] = [Bias.L, Bias.LC, Bias.C, Bias.RC, Bias.R];
+
+export const BIAS_COLORS: Record<Bias, string> = {
+  [Bias.L]: '#3b82f6',
+  [Bias.LC]: '#60a5fa',
+  [Bias.C]: '#a855f7',
+  [Bias.RC]: '#f97316',
+  [Bias.R]: '#ef4444',
 };
 
 /** A single reading record stored in IndexedDB */
@@ -79,11 +80,6 @@ export interface Settings {
   period: 'week' | 'month';
   notifications: boolean;
 }
-
-export const DEFAULT_SETTINGS: Settings = {
-  period: 'week',
-  notifications: true,
-};
 
 /** Messages between popup/sidepanel and background */
 export type Message =

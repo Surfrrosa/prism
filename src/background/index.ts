@@ -1,16 +1,7 @@
 import { lookupSource, getSourcesForBias } from '../lib/sources';
 import { storeReading, getReadings, clearAllData, getSettings, saveSettings, pruneOldReadings } from '../lib/storage';
 import { computeStats, getPeriodRange } from '../lib/score';
-import { Bias } from '../lib/types';
-
-// --- Badge colors mapped to dominant bias ---
-const BIAS_COLORS: Record<Bias, string> = {
-  [Bias.L]: '#3B82F6',   // blue
-  [Bias.LC]: '#60A5FA',  // light blue
-  [Bias.C]: '#A855F7',   // purple
-  [Bias.RC]: '#F97316',  // orange
-  [Bias.R]: '#EF4444',   // red
-};
+import { Bias, BIAS_COLORS } from '../lib/types';
 
 // --- Track completed page loads ---
 
