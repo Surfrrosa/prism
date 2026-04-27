@@ -44,6 +44,30 @@ Media Bias/Fact Check (MBFC) open-source extension database (MIT license). ~2,72
 - `scripts/build-sources.mjs` — MBFC JSON processor
 - `scripts/generate-icons.mjs` — SVG to PNG icon generation
 
+## Before Writing New Code
+
+Before adding a helper, type, or marketing script, search for existing
+ones first:
+
+- `rg "<symbol>" src/ scripts/` for similar names or near-duplicates
+- Shared modules in `src/lib/`:
+  - `sources.ts` — domain lookup with subdomain fallback
+  - `storage.ts` — IndexedDB ops, dedup, pruning
+  - `score.ts` — diversity score algorithm
+  - `types.ts` — `Bias`, `Credibility` enums, `ReadingRecord`,
+    `DietStats`, `BIAS_LABELS`, `BIAS_SHORT`, `BIAS_KEYS`, `BIAS_COLORS`
+- Marketing/promo scripts share `scripts/lib/canvas-card.mjs` — use
+  `BG`, `SPECTRUM`, `prismIcon`, `renderCards` from there. Don't
+  re-declare these constants in a new generator
+- Marketing assets go in `marketing/` (out of the extension package),
+  not `static/` (which ships with the extension)
+- `show(id)` currently exists separately in popup and sidepanel — if
+  you need it in a third place, extract to `src/lib/dom.ts`
+
+Don't add a new file for a one-off variant of an existing pattern.
+If you're about to copy-paste a helper and tweak two values, extract
+a shared one instead.
+
 ## Design
 
 90s retro computing aesthetic. VT323 + Space Mono fonts. Dark purple palette with spectrum colors (blue → purple → red). Shareable cards rendered via Canvas API.
