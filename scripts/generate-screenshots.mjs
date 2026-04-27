@@ -3,7 +3,7 @@
 /**
  * Generate Chrome Web Store screenshot images for Prism.
  *
- * Outputs (to static/):
+ * Outputs (to marketing/):
  *   screenshot-1.png  1280x800  Popup view
  *   screenshot-2.png  1280x800  Dashboard view
  *   screenshot-3.png  1280x800  Badge + explainer
@@ -13,9 +13,11 @@
 import sharp from 'sharp';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { mkdirSync } from 'fs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const OUT = path.resolve(__dirname, '../static');
+const OUT = path.resolve(__dirname, '../marketing');
+mkdirSync(OUT, { recursive: true });
 
 const BG = '#1a1127';
 const CARD_BG = '#241b36';
