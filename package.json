@@ -15,7 +15,7 @@
     "esbuild": "0.28.0",
     "@types/chrome": "0.1.43",
     "esbuild": "0.28.2",
-    "@types/chrome": "0.2.5",
+    "@types/chrome": "0.2.6",
     "esbuild": "0.28.1",
     "sharp": "0.35.3",
     "typescript": "7.0.2"
